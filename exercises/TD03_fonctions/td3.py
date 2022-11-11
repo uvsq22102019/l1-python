@@ -80,27 +80,6 @@ def proportionTemps(temps: tuple, proportion: float):
     return secondeEnTemps(int(tempsEnSeconde(temps) * proportion))
 
 
-afficheTemps(proportionTemps((2, 0, 36, 0), 0.2))
+afficheTemps(proportionTemps(proportion=0.2, temps=(2, 0, 36, 0)))
 
 # appeler la fonction en échangeant l'ordre des arguments
-
-
-def tempsEnDate(temps: tuple):
-    return temps[0] * 
-
-
-annee = 1970
-jours = 1
-heures = 0
-minutes = 0
-secondes = 0
-
-
-def afficheDate(date: int = -1):
-    return(annee, jours, heures, minutes, secondes)
-
-
-temps = secondeEnTemps(1000000000)
-afficheTemps(temps)
-afficheDate(tempsEnDate(temps))
-afficheDate()
