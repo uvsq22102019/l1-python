@@ -1,4 +1,6 @@
 # temps[0] : jours, temps[1]: heures, temps[2]: minutes, temps[3]: secondes
+import time
+
 
 def tempsEnSeconde(temps: tuple) -> int:
     """ Renvoie la valeur en seconde de temps donné comme jour, heure, minute,
@@ -83,3 +85,91 @@ def proportionTemps(temps: tuple, proportion: float):
 afficheTemps(proportionTemps(proportion=0.2, temps=(2, 0, 36, 0)))
 
 # appeler la fonction en échangeant l'ordre des arguments
+
+
+def tempsEnDate(temps):
+    annee = 1970 + temps[0] // 365
+    numero_de_jour = 1 + temps[0] % 365
+    return(annee, numero_de_jour, temps[1], temps[2], temps[3])
+
+
+def afficheDate(date: tuple = ()):
+    if len(date) == 0:
+        date = tempsEnDate(secondeEnTemps(int(time.time())))
+    print("Jour numéro", date[1], "de l'année", date[0], "à",
+         str(date[2]) + ":" + str(date[3]) + ":" + str(date[4]))
+
+
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+afficheDate()
+
+print(time.time())
+
+
+def estbisextile(annee: int):
+    return annee % 4 == 0 and (annee % 100 != 0 or annee % 400 == 0)
+
+
+def bisextile(jours: int):
+    annee = 1970
+    while(jours >= 365):
+        if estbisextile(annee):
+            print("L'année" + str(annee) + "est bisextile")
+            jours -= 366
+        else:
+            jours -= 365
+        annee += 1
+
+
+bisextile(20000)
+
+
+def nombrebisextile(jours: int):
+    annee = 1970
+    compteur_bisextile = 0
+    while(jours >= 365):
+        if estbisextile(annee):
+            compteur_bisextile += 1
+            jours -= 366
+        else:
+            jours -= 365
+        annee += 1
+    return compteur_bisextile
+
+
+def tempsEnDateBisextile(temps: tuple):
+    jour, heure, minute, seconde = temps
+    jour = jour - nombrebisextile(jour)
+    temps_ajuste = (jour, heure, minute, seconde)
+    return tempsEnDate(temps_ajuste)
+
+
+afficheDate(tempsEnDateBisextile(secondeEnTemps(int(time.time()))))
+
+
+# Question optionnelle : Gestion des mois dans l'affichage
+
+
+def afficheDateV2(date: tuple()):
+    if len(date) == 0:
+        date = tempsEnDateBisextile(secondeEnTemps(int(time.time())))
+    # On étblit deux listes: 
+    # Une liste des noms de chaque mois
+    nom_des_mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+                    "Juillet", "Aout", "Septembre", "Octobre", "Novembre",
+                    "Décembre"]
+    # Ainsi qu'une liste du nombre de jours de chaque mois
+    nb_jours_des_mois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    # Si l'année est bisextile, Février a un jour de plus
+    if estbisextile(date[0]):
+        nb_jours_des_mois[1] += 1
+
+    mois = ""
+    jour = date[1]
+    # On parcourt les mois en retirant le nombre de jours de chaque mois à la 
+    # variable jour
+    for i in range(12):
+        if jour <= nb_jours_des_mois[i]:
+            mois = nom_des_mois[i]
