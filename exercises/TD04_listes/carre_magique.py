@@ -15,4 +15,9 @@ afficheCarre(carre_mag)
 afficheCarre(carre_pas_mag)
 
 
+def testLignesEgales(carre):
+    """ Renvoie la somme des éléments d'une ligne de la liste 2D carre si toutes les lignes ont la même somme, et -1 sinon """
+    sum(liste_aléatoire)
 
+print(testLignesEgales(carre_mag))
+print(testLignesEgales(carre_pas_mag))
