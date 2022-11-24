@@ -31,15 +31,33 @@ print("Le temps de vol de", 3, "est", tempsVol(3))
 
 def tempsVolListe(n_max):
     """ Retourne la liste de tous les temps de vol de 1 à n_max """
-    liste = []
-    liste = [tempsVol(i) for i  in range(1, n_max + 1)]
-    return liste
-
-print(tempsVolListe(100))
+    return[tempsVol(i) for i  in range(1, n_max + 1)]
 
 
-max = 0
-for i in range(1, 10000 + 1):
-    max = [tempsVol(i) ]
-print(max(max))
+
+liste_n_max = tempsVolListe(10000)
+print(liste_n_max)
+print(max(liste_n_max))
+print(liste_n_max.index(max(liste_n_max))+1)
+
+
+def altMax(n: int):
+    return max(syracuse(n))
+
+
+def altMaxListe(n_max: int):
+    return[altMax(i) for i in range(1, n_max+1)]
+
+
+liste_alt = altMaxListe(10000)
+altitude_max = max(liste_alt)
+print("L'entier", liste_alt.index(altitude_max)+1, "a la plus grande altitude maximal à",  altitude_max)
+
+
+
+
+
+
+
+
 
