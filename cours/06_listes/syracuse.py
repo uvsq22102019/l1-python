@@ -52,5 +52,5 @@ def altMaxListe(n_max: int):
 liste_alt = altMaxListe(10000)
 altitude_max = max(liste_alt)
 print("L'entier", liste_alt.index(altitude_max)+1, "a la plus grande altitude maximal à",  altitude_max)
-ss
+
 
