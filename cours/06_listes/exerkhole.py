@@ -27,18 +27,14 @@ ma_chaine = 'abracatambra'
 compteur_lettres(ma_chaine)
 
 
-lap = [5, 6, 7]
-n = 8
+u = int(input("Choisir un nombre dans la liste dans la liste: [2; 16; 18; 21; 29; 36; 57; 62; 77; 81; 105]"))
 
-def max(lap):
-    if lap[0] > n:
-        print(lap[0:3])
-    elif lap(1) > n:
-        print(lap[1:2])
-    elif lap(2) > n:
-        print(lap[2])
-    else:
-        print(max(n))
 
-max(n)
+def nombre_supérieur(liste):
+    liste_sup = []
+    for i in range (len(liste)):
+        if (u < liste[i]):
+            liste_sup.append(liste[i])
+    print(liste_sup)
+nombre_supérieur([2, 16, 18, 21, 29, 36, 57, 62, 77, 81, 105])
 
